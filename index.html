@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador</title>
+    <link rel="stylesheet" href="style.css">
+</head> 
+<body> 
+    <header> 
+        <div class="header-content">  
+            <a href="https://www.aluracursos.com/">
+                <img class="header_imagen" src="imagenes/logo2.png" alt="Logo de Alura">
+            </a>
+            <h1>ENCRIPTADOR DE TEXTO</h1>
+        </div>
+    </header> 
+    <main> 
+        <section class="contenido">
+            <div class="contenido_textoingresado"> 
+                <textarea id="textoIntroducido" placeholder="Introduce tu texto aquí..."></textarea>
+                <button class="contenido__textoingresado__encriptar" onclick="encriptar()">Encriptar</button>
+                <button class="contenido__textoingresado__desencriptar" onclick="desencriptar()">Desencriptar</button>
+            </div>
+            <div class="contenido_textoresultado" id="contenidoResultado">
+                <textarea id="textoResultado" readonly></textarea>
+                <button class="contenido__textoresuktado__copiar" id="botonCopiar" class="oculto" onclick="copiarTexto()">Copiar</button>
+                <div class="contenido_textoresultado_contenidoInicial">
+                    <p class="contenido__texto_informacion" id="mensaje1">Tu mensaje aparecerá aquí...</p>
+                    <p class="contenido__texto_informacion" id="mensaje2">Desencriptador de texto en acción</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Desarrollado por Stephano Rivadeneyra</p>
+        <a href="https://www.linkedin.com/in/stephano-rivadeneyra-huaman/" class="linkedin-link">
+            <img src="imagenes/linkedin.png" alt="LinkedIn" class="linkedin-imagen">
+        </a>
+        <a href="https://github.com/stephanowrh" class="linkedin-link">
+            <img src="imagenes/github.png" alt="LinkedIn" class="linkedin-imagen">
+        </a>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -13,23 +13,33 @@
                 <img class="header_imagen" src="imagenes/logo2.png" alt="Logo de Alura">
             </a>
             <h1>ENCRIPTADOR DE TEXTO</h1>
-        </div>
+        </div> 
     </header> 
     <main> 
         <section class="contenido">
-            <div class="contenido_textoingresado"> 
+            <div class="contenido_textoingresado">
                 <textarea id="textoIntroducido" placeholder="Introduce tu texto aquí..."></textarea>
+                <!-- Mensaje de advertencia con imagen al costado izquierdo centrado -->
+                <div class="mensaje-advertencia">
+                    <img src="imagenes/signo-exclamacion.png" alt="Advertencia" class="icono-advertencia">
+                    <p class="advertencia-texto">Solo letras minúsculas y sin acentos</p>
+                </div>
+                
                 <button class="contenido__textoingresado__encriptar" onclick="encriptar()">Encriptar</button>
                 <button class="contenido__textoingresado__desencriptar" onclick="desencriptar()">Desencriptar</button>
             </div>
+            
             <div class="contenido_textoresultado" id="contenidoResultado">
-                <textarea id="textoResultado" readonly></textarea>
-                <button class="contenido__textoresuktado__copiar" id="botonCopiar" class="oculto" onclick="copiarTexto()">Copiar</button>
+                <textarea id="textoResultado" placeholder="Tu mensaje encriptado aparecerá aquí..." readonly></textarea>
+                <!-- Botón Copiar centrado -->
+                <div class="copiar-contenedor">
+                    <button class="contenido__textoresultado__copiar" id="botonCopiar" class="oculto" onclick="copiarTexto()">Copiar</button>
+                </div>
                 <div class="contenido_textoresultado_contenidoInicial">
-                    <p class="contenido__texto_informacion" id="mensaje1">Tu mensaje aparecerá aquí...</p>
                     <p class="contenido__texto_informacion" id="mensaje2">Desencriptador de texto en acción</p>
                 </div>
             </div>
+            
         </section>
     </main>
     <footer>

@@ -89,6 +89,28 @@ header {
     color: var(--color-primario);
 }
 
+.contenido_textoingresado {
+    text-align: center; /* Centra todo el contenido dentro de este div */
+}
+
+.mensaje-advertencia {
+    display: inline-flex; /* Coloca la imagen y el texto en una fila y permite que se centre */
+    align-items: center; /* Alinea verticalmente la imagen y el texto al centro */
+    justify-content: center; /* Asegura que todo el conjunto esté centrado horizontalmente */
+    margin: 10px 0;
+}
+
+.icono-advertencia {
+    width: 20px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    margin-right: 8px; /* Espacio entre la imagen y el texto */
+}
+
+.advertencia-texto {
+    margin: 0; /* Elimina márgenes alrededor del texto */
+    color: var(--color-primario); /* Asegura que el color del texto sea el correcto */
+}
+
 .contenido__textoingresado__encriptar,
 .contenido__textoingresado__desencriptar {
     font-family: var(--fuente-krona);
@@ -106,7 +128,7 @@ header {
 .contenido__textoingresado__desencriptar:hover {
     background-color: var(--color-cuaternario);
     box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
-}
+} 
 
 .contenido_textoresultado {
     width: 100%;
@@ -118,6 +140,25 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
+    text-align: center; /* Centra todo el contenido dentro de este div */
+}
+
+.copiar-contenedor {
+    display: flex;
+    justify-content: center; /* Centra el botón Copiar horizontalmente */
+    margin-top: 10px; /* Añade un margen superior para separar del cuadro de texto */
+}
+
+.contenido__textoresuktado__copiar {
+    padding: 10px 20px; /* Ajusta el tamaño del botón */
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--color-primario); /* Asegúrate de que coincida con tu esquema de colores */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto; /* Centra el botón dentro de su contenedor */
 }
 
 .contenido_textoresultado textarea {
@@ -259,4 +300,53 @@ footer {
     .linkedin-imagen {
         width: 20px;
     }
+}
+.notificacion {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.mensaje-advertencia {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color: var(--color-primario); /* Color predeterminado */
+}
+
+.icono-advertencia {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.advertencia-texto {
+    font-size: 16px;
+    transition: color 0.3s, font-weight 0.3s, transform 0.3s;
+}
+
+.advertencia-texto.error {
+    color: red; /* Color rojo para errores */
+    font-weight: bold; /* Negrita para errores */
+}
+
+.advertencia-texto.animar {
+    animation: animarTexto 0.6s;
+}
+
+@keyframes animarTexto {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.mensaje-advertencia .advertencia-texto.error {
+    color: red !important; /* Forzar el color rojo */
 }

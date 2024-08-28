@@ -6,19 +6,50 @@ function mostrarAdvertencia(mensaje, tipo) {
     advertenciaTexto.textContent = mensaje;
 
     // Limpiar clases anteriores
-    advertenciaTexto.classList.remove('info', 'error');
+    advertenciaTexto.classList.remove('info', 'error', 'animar');
     
     // Aplicar la clase correspondiente según el tipo de mensaje
     advertenciaTexto.classList.add(tipo);
 
-    // Aplicar animación
-    advertenciaTexto.classList.add('animar');
+    if (tipo === "error") {
+        // Aplicar animación solo si es un error
+        advertenciaTexto.classList.add('animar');
 
-    // Remover la clase de animación después de la animación
-    setTimeout(() => {
-        advertenciaTexto.classList.remove('animar');
-    }, 600); // Duración de la animación en milisegundos
+        // Remover la clase de animación después de un tiempo para que no interfiera
+        setTimeout(() => {
+            advertenciaTexto.classList.remove('animar');
+        }, 600); // Duración de la animación en milisegundos
+    }
 }
+
+// Función para copiar el texto al portapapeles
+async function copiarTexto() {
+    const textoResultado = document.getElementById("textoResultado").value;
+
+    try {
+        await navigator.clipboard.writeText(textoResultado);
+
+        // Mostrar una notificación de éxito
+        mostrarNotificacion("¡Copiado al portapapeles!");
+    } catch (err) {
+        console.error('Error al copiar al portapapeles: ', err);
+    }
+}
+
+// Función para mostrar una notificación
+function mostrarNotificacion(mensaje) {
+    const notificacion = document.createElement('div');
+    notificacion.className = 'notificacion';
+    notificacion.innerText = mensaje;
+
+    document.body.appendChild(notificacion);
+
+    setTimeout(() => {
+        document.body.removeChild(notificacion);
+    }, 2000);
+}
+
+// Resto de las funciones permanece igual
 
 
 // Función para validar que solo se ingresen letras minúsculas sin acentos ni caracteres especiales
@@ -30,6 +61,8 @@ function validarTexto(texto) {
         return false;
     }
 
+    // Si el texto es válido, mostrar mensaje por defecto en color original
+    mostrarAdvertencia("Solo letras minúsculas y sin acentos", "info");
     return true;
 }
 
@@ -85,59 +118,4 @@ function desencriptar() {
 
     mostrarOcultarContenidoInicial();
     ajustarAlturaContenedor();
-}
-
-// Función para mostrar u ocultar el contenido inicial
-function mostrarOcultarContenidoInicial() {
-    const contenidoInicial = document.querySelector(".contenido_textoresultado_contenidoInicial");
-    const textoResultado = document.getElementById("textoResultado").value.trim();
-
-    if (textoResultado) {
-        contenidoInicial.style.opacity = '0';
-        setTimeout(function() {
-            contenidoInicial.style.display = 'none';
-        }, 300); // Espera a que la transición termine antes de ocultar el elemento
-
-        // Mostrar el área de resultado con transición
-        document.getElementById('textoResultado').style.opacity = '1';
-    } else {
-        contenidoInicial.style.display = 'flex';
-    }
-}
-
-// Función para ajustar la altura del contenedor de resultado
-function ajustarAlturaContenedor() {
-    const contenedorResultado = document.querySelector(".contenido_textoresultado");
-    const textareaResultado = document.getElementById("textoResultado");
-
-    if (textareaResultado.scrollHeight > contenedorResultado.clientHeight) {
-        contenedorResultado.style.height = `${textareaResultado.scrollHeight + 50}px`;
-    }
-}
-
-// Función para copiar el texto al portapapeles
-async function copiarTexto() {
-    const textoResultado = document.getElementById("textoResultado").value;
-
-    try {
-        await navigator.clipboard.writeText(textoResultado);
-
-        // Mostrar una notificación de éxito
-        mostrarNotificacion("¡Copiado al portapapeles!");
-    } catch (err) {
-        console.error('Error al copiar al portapapeles: ', err);
-    }
-}
-
-// Función para mostrar una notificación
-function mostrarNotificacion(mensaje) {
-    const notificacion = document.createElement('div');
-    notificacion.className = 'notificacion';
-    notificacion.innerText = mensaje;
-
-    document.body.appendChild(notificacion);
-
-    setTimeout(() => {
-        document.body.removeChild(notificacion);
-    }, 2000);
 }
